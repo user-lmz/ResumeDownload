@@ -113,11 +113,12 @@ public class DownloadService extends Service {
                 //传递给Service
                 mHandler.obtainMessage(0, fileInfo).sendToTarget();
             } catch (Exception e) {
+                Log.e(LOG_TAG, e.getMessage());
                 e.printStackTrace();
             } finally {
-                urlConnection.disconnect();
                 try {
                     randomFile.close();
+                    urlConnection.disconnect();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
